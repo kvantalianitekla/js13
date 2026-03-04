@@ -7,11 +7,42 @@
     <title>Document</title>
   </head>
   <body>
-<div class="button">
+    <div class="button">
+      <button id="menubtn">Menu</button>
+      <button id="todobtn">Todo</button>
+      <button id="calcbtn">Calculator</button>
+    </div>
 
-</div>
+    <div class="panel" id="mobile-menu">
+      <h2>Mobile Menu</h2>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Profile</a></li>
+      </ul>
+    </div>
 
+    <div class="panel" id="todo-panel">
+      <h2>Todo List</h2>
 
+      <input type="text" id="todoInput" placeholder="Add a new task" />
+      <button id="addTodo">Add Task</button>
+      <ul id="todoList"></ul>
+    </div>
+
+    <div class="panel" id="calculator-panel">
+      <h2>Calculator</h2>
+      <input type="number" id="num1" placeholder="Number 1" />
+      <input type="number" id="num2" placeholder="Number 2" />
+      <div class="calc-buttons">
+        <button class="op" data-op="+">+</button>
+        <button class="op" data-op="-">-</button>
+        <button class="op" data-op="*">*</button>
+        <button class="op" data-op="/">/</button>
+      </div>
+      <div id="result"></div>
+    </div>
 
     <script src="script.js"></script>
   </body>

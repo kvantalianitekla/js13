@@ -64,3 +64,103 @@
 // 🎨 დამატებითი მოთხოვნა
 // •	მხოლოდ ერთი panel შეიძლება იყოს გახსნილი ერთდროულად
 // (თუ ერთი გაიხსნა, სხვა უნდა დაიხუროს)
+
+// button selects
+
+let menuBtn = document.querySelector("#menubtn");
+let todoBtn = document.querySelector("#todobtn");
+let calcBtn = document.querySelector("#calcbtn");
+
+// panel select
+
+let menuPanel = document.querySelector("#mobile-menu");
+let todoPanel = document.querySelector("#todo-panel");
+let calcPanel = document.querySelector("#calculator-panel");
+
+// ---------------------------------------------------------------
+
+function closeAllPanels() {
+  menuPanel.classList.remove("active");
+  todoPanel.classList.remove("active");
+  calcPanel.classList.remove("active");
+}
+
+// -----------------------------------------------------------------
+
+menuBtn.addEventListener("click", function () {
+  let isOpen = menuPanel.classList.contains("active");
+  closeAllPanels();
+  if (!isOpen) {
+    menuPanel.classList.add("active");
+  }
+});
+
+todoBtn.addEventListener("click", function () {
+  let isOpen = todoPanel.classList.contains("active");
+  closeAllPanels();
+  if (!isOpen) {
+    todoPanel.classList.add("active");
+  }
+});
+
+calcBtn.addEventListener("click", function () {
+  let isOpen = calcPanel.classList.contains("active");
+  closeAllPanels();
+  if (!isOpen) {
+    calcPanel.classList.add("active");
+  }
+});
+
+// ----------------------------------------------------------------
+
+let todoInput = document.querySelector("#todoInput");
+let addTodo = document.querySelector("#addTodo");
+let todoList = document.querySelector("#todoList");
+
+addTodo.addEventListener("click", function () {
+  if (todoInput.value.trim() === "") {
+    return;
+  }
+
+  let li = document.createElement("li");
+  li.textContent = todoInput.value;
+
+  let deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+
+  deleteBtn.addEventListener("click", function () {
+    li.remove();
+  });
+
+  li.appendChild(deleteBtn);
+  todoList.appendChild(li);
+
+  todoInput.value = "";
+});
+
+// calculator
+
+let num1 = document.querySelector("#num1");
+let num2 = document.querySelector("#num2");
+let result = document.querySelector("#result");
+let operations = document.querySelectorAll(".op");
+
+operations.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    if (num1.value === "" || num2.value === "") {
+      return;
+    }
+
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+    let op = btn.dataset.op;
+    let res;
+
+    if (op === "+") res = n1 + n2;
+    if (op === "-") res = n1 - n2;
+    if (op === "*") res = n1 * n2;
+    if (op === "/") res = n1 / n2;
+
+    result.textContent = "Result:" + res;
+  });
+});
